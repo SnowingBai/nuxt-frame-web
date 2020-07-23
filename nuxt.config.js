@@ -24,7 +24,7 @@ export default {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: '//at.alicdn.com/t/font_1537486_9wahib9lpxt.css'
+        href: '//at.alicdn.com/t/font_1537486_rtpoaxtera.css'
       }
     ]
   },
@@ -32,6 +32,13 @@ export default {
    ** Customize the progress-bar color
    */
   loading: { color: 'teal' },
+  /*
+   ** Global scss vara
+   ** https://zh.nuxtjs.org/api/configuration-build/#styleresources
+   */
+  styleResources: {
+    scss: ['~/assets/scss/variables.scss']
+  },
   /*
    ** Global CSS
    */
@@ -58,7 +65,8 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Axios module configuration

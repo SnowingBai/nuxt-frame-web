@@ -1,5 +1,6 @@
-.cell {
-  .el-tag {
-    margin-right: 0px;
+.el-button {
+  // 长按钮
+  &.long {
+    width: 100%;
   }
 }
