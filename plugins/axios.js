@@ -1,5 +1,5 @@
 import { Message } from 'element-ui'
-import createApiList from '~/api'
+import api from '~/api'
 import { isLogin, getToken, reLogin } from '~/utils/auth'
 
 export default function({ $axios, redirect }, inject) {
@@ -54,5 +54,5 @@ export default function({ $axios, redirect }, inject) {
     }
   })
 
-  inject('api', createApiList($axios))
+  inject('api', api($axios))
 }
