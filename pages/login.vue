@@ -148,13 +148,16 @@ export default {
           return false
         }
 
-        this.loading = true
-
-        setTimeout(() => {
-          this.loading = false
-        }, 1000)
-
-        console.log('submit success')
+        this.$api.user
+          .login({
+            ...this[formName]
+          })
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
       })
     }
   }

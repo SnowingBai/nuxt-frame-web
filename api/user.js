@@ -1,17 +1,11 @@
-import request from '@/service'
-
-export function login(data) {
-  return request({
+export default {
+  login: {
     url: '/user/login',
-    method: 'post',
-    data
-  })
-}
+    method: 'POST'
+  },
 
-export function getInfo(token) {
-  return request({
+  getInfo: {
     url: '/user/info',
-    method: 'get',
-    params: { token }
-  })
+    method: 'GET'
+  }
 }

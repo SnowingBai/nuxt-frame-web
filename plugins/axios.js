@@ -1,11 +1,10 @@
 import { Message } from 'element-ui'
-// import Mock from './mockjs'
+import createApiList from '~/api'
 import { isLogin, getToken, reLogin } from '~/utils/auth'
 
 export default function({ $axios, redirect }, inject) {
   // 请求
   $axios.onRequest(config => {
-    console.log(config)
     // 基本配置
     config.timeout = 10000
     config.headers['Content-Type'] = 'application/json'
@@ -20,7 +19,9 @@ export default function({ $axios, redirect }, inject) {
 
   // 请求失败
   $axios.onRequestError(() => {
-    Message.error('网络错误，请稍后再试')
+    if (!process.server) {
+      Message.error('网络错误，请稍后再试')
+    }
   })
 
   // 响应
@@ -38,7 +39,9 @@ export default function({ $axios, redirect }, inject) {
 
   // 响应失败
   $axios.onResponseError(error => {
-    Message.error(error.message || '服务器异常')
+    if (!process.server) {
+      Message.error(error.message || '服务器异常')
+    }
   })
 
   $axios.onError(error => {
@@ -50,4 +53,6 @@ export default function({ $axios, redirect }, inject) {
       redirect('/500')
     }
   })
+
+  inject('api', createApiList($axios))
 }
